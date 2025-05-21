@@ -75,7 +75,7 @@
         <version>3.5.3</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng-BatchExecution.xml</suiteXmlFile>
+            <suiteXmlFile>testngBatchExecutionxml/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
@@ -92,7 +92,7 @@
         <version>3.5.3</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng-RegressionSuite.xml</suiteXmlFile>
+            <suiteXmlFile>testng-Regressionsuitexml/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
