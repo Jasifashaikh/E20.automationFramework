@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>Qspider</groupId>
+ <groupId>Qspider</groupId>
   <artifactId>AutomationFrameworkQCO-SOEAJD-A10</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
@@ -11,6 +11,7 @@
     <artifactId>selenium-java</artifactId>
     <version>4.12.1</version>
 </dependency>
+
 <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 <dependency>
     <groupId>org.apache.poi</groupId>
@@ -24,11 +25,7 @@
     <artifactId>poi-ooxml</artifactId>
     <version>5.4.1</version>
 </dependency>  
-<dependency>
-   	<groupId>qspider</groupId>
-   	<artifactId>sellenium</artifactId>
-   	<version>0.0.1-SNAPSHOT</version>
-   </dependency>
+
    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
     <groupId>org.testng</groupId>
@@ -42,13 +39,14 @@
     <artifactId>extentreports</artifactId>
     <version>5.0.9</version>
 </dependency>
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.24</version>
-    <scope>provided</scope>
-</dependency> 
+
 </dependencies>
+<profiles>
+  
+  
+  <profile>
+  <id>smoke</id>
+ 
 <build>
   <plugins>  
       <plugin>
@@ -63,4 +61,47 @@
       </plugin>
 </plugins>
  </build>  
+   </profile>
+   <profile>
+  <id>batch</id>
+  <build>
+  <plugins>  
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng-BatchExecution.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+</plugins>
+ </build>
+  
+  </profile>
+  
+  <profile>
+  <id>regression</id>
+  <build>
+  <plugins>  
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng-RegressionSuite.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+</plugins>
+ </build>
+  
+  </profile>
+  
+  
+  
+  
+  </profiles>
 </project>
